@@ -1,4 +1,3 @@
-
 from tkinter import *
 from PIL import Image, ImageTk
 import sqlite3
@@ -17,7 +16,12 @@ fenetre.geometry("1000x800")
 fenetre.configure(bg = "SteelBlue3")
 
 
+canevas = Canvas(fenetre, width=500, height=600, bg="SteelBlue4")
+canevas.pack(padx=5,pady=5)
+canevas.place(x=5, y=100)
 
+titre= Label(fenetre,text = "Simulateur Bac 2023",fg = 'black',font = "Arial 15 italic")
+titre.place(x=5, y=5)
 
 
 
