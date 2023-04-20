@@ -13,10 +13,10 @@ fenetre.title("Simulateur des notes du Bac")
 
 
 fenetre.geometry("1920x1000")
-fenetre.configure(bg = "SteelBlue3")
+fenetre.configure(bg = "grey8")
 
 
-canevas = Canvas(fenetre, width=450, height=500, bg="SteelBlue4")
+canevas = Canvas(fenetre, width=450, height=500, bg="grey12",  highlightbackground = "grey10")
 canevas.pack(padx=5,pady=5)
 canevas.place(x=400, y=200)
 
