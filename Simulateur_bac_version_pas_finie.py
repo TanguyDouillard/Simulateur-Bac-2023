@@ -28,6 +28,18 @@ titre= Label(fenetre, text = "Elèves",fg = 'black')
 titre.configure(font=("Source Serif Pro Semibold",25))
 titre.place(x=90, y=55)
 
+titre= Label(fenetre, text = "Résultat",fg = 'black')
+titre.configure(font=("Source Serif Pro Semibold",25))
+titre.place(x=1000, y=55)
+
+titre= Label(fenetre, text = "Mention : ",fg = 'dark violet', bg="grey8")
+titre.configure(font=("Source Serif Pro Semibold",25))
+titre.place(x=1000, y=235)
+
+titre= Label(fenetre, text = "Moyenne : ",fg = 'dark violet', bg="grey8")
+titre.configure(font=("Source Serif Pro Semibold",25))
+titre.place(x=995, y=435)
+
 bouton_1 = Button(fenetre,text = " Alexis ",bg = 'blue violet',command = fenetre.destroy)
 bouton_1.configure(height=4, width=25)
 bouton_1.place(x=60,y=140)
@@ -65,3 +77,4 @@ bouton_quit.configure(height=4, width=25)
 bouton_quit.place(x=1050,y=850)
 
 fenetre.mainloop()
+
