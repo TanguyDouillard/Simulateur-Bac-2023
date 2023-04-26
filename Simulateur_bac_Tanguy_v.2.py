@@ -5,42 +5,42 @@ import sqlite3
 
 #--------------------------------------------------------------
 
-def moyenne(Prenom):
-    liste_3=trouver_notes(Prenom)
-    moy=0
-    liste_des_notes=[]
-    for elt in liste_3[0]:
-        if elt == None:
-            pass
-        else:
-            liste_des_notes.append(elt)
-            moy=moy+elt
-    moyenne=moy/len(liste_des_notes)
-    return moyenne
-
-def trouver_notes(Prenom):
-    l=[Prenom]
-    cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
-    liste_2=cursor.fetchall()
-    print(liste_2)
-    for i in range(len(liste_2)):
-        for elt in liste_2:
-            labels.append(Label(canevas,text=elt,bg='Skyblue3', font="Sans 7"))
-            labels[i].place(x=10,y=10+(30*i))
-
-    return liste_2
-
-def mention(Prenom):
-    moy=moyenne(Prenom)
-    if moy>=16:
-        return "Mention très bien"
-    elif moy>=14:
-        return "Mention bien"
-    elif moy>=12:
-        return "Mention assez bien"
-    elif moy>=10:
-        return "Tu n'as pas de mention, mais tu as ton Bac !"
-    return "Malheureusement tu n'as pas ton Bac, mais peut-etre avec les rattrapages !"
+##def moyenne(Prenom):
+##    liste_3=trouver_notes(Prenom)
+##    moy=0
+##    liste_des_notes=[]
+##    for elt in liste_3[0]:
+##        if elt == None:
+##            pass
+##        else:
+##            liste_des_notes.append(elt)
+##            moy=moy+elt
+##    moyenne=moy/len(liste_des_notes)
+##    return moyenne
+##
+##def trouver_notes(Prenom):
+##    l=[Prenom]
+##    cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
+##    liste_2=cursor.fetchall()
+##    print(liste_2)
+##    for i in range(len(liste_2)):
+##        for elt in liste_2:
+##            labels.append(Label(canevas,text=elt,bg='Skyblue3', font="Sans 7"))
+##            labels[i].place(x=10,y=10+(30*i))
+##
+##    return liste_2
+##
+##def mention(Prenom):
+##    moy=moyenne(Prenom)
+##    if moy>=16:
+##        return "Mention très bien"
+##    elif moy>=14:
+##        return "Mention bien"
+##    elif moy>=12:
+##        return "Mention assez bien"
+##    elif moy>=10:
+##        return "Tu n'as pas de mention, mais tu as ton Bac !"
+##    return "Malheureusement tu n'as pas ton Bac, mais peut-etre avec les rattrapages !"
 
 
 
@@ -71,16 +71,23 @@ def moyenne(Prenom):
     moyenne=moy/len(liste_des_notes)
     return moyenne
 
-def trouver_notes(Prenom):
+def trouver_notes():
+    Prenom="Tanguy"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
     liste_2=cursor.fetchall()
     labels=[]
     print(liste_2)
-    for i in range(len(liste_2)):
-        for elt in liste_2:
-            labels.append(Label(canevas,text=elt,bg='Skyblue3', font="Sans 7"))
-            labels[i].place(x=10,y=10+(30*i))
+##    for i in range(len(liste_2)):
+##        for elt in liste_2[i]:
+##            labels.append(Label(canevas,text=elt,bg='blue', font="Sans 7"))
+##            labels[i].place(x=200,y=60+(60*i))
+    #for i in range(len(liste_2)):
+    for elt in liste_2[0]:
+        labels.append(Label(canevas,text=elt,bg='blue'))
+    for i in range(len(labels)):
+        labels[i].place(x=200,y=60+(60*i))
+        print(elt,"et", labels[i], Prenom)
     return liste_2
 
 def mention(Prenom):
@@ -128,35 +135,35 @@ titre= Label(fenetre, text = "Moyenne : ",fg = 'dark violet', bg="grey8")
 titre.configure(font=("Source Serif Pro Semibold",25))
 titre.place(x=995, y=435)
 
-bouton_1 = Button(fenetre,text = " Alexis ",bg = 'blue violet',command = trouver_notes("Alexis"))
+bouton_1 = Button(fenetre,text = " Alexis ",bg = 'blue violet',command = trouver_notes)
 bouton_1.configure(height=4, width=25)
 bouton_1.place(x=60,y=140)
 
-bouton_2 = Button(fenetre,text = " Tanguy ",bg = 'forest green',command = trouver_notes("Tanguy"))
+bouton_2 = Button(fenetre,text = " Tanguy ",bg = 'forest green',command = trouver_notes)
 bouton_2.configure(height=4, width=25)
 bouton_2.place(x=60,y=215)
 
-bouton_3 = Button(fenetre,text = " Félix ",bg = 'blue violet',command = trouver_notes("Felix"))
+bouton_3 = Button(fenetre,text = " Félix ",bg = 'blue violet',command = trouver_notes)
 bouton_3.configure(height=4, width=25)
 bouton_3.place(x=60,y=290)
 
-bouton_4 = Button(fenetre,text = " Phillip ",bg = 'forest green',command = trouver_notes("Phillip"))
+bouton_4 = Button(fenetre,text = " Phillip ",bg = 'forest green',command = trouver_notes)
 bouton_4.configure(height=4, width=25)
 bouton_4.place(x=60,y=365)
 
-bouton_5 = Button(fenetre,text = " Massine ",bg = 'blue violet',command = trouver_notes("Massine"))
+bouton_5 = Button(fenetre,text = " Massine ",bg = 'blue violet',command = trouver_notes)
 bouton_5.configure(height=4, width=25)
 bouton_5.place(x=60,y=440)
 
-bouton_6 = Button(fenetre,text = " Flavie ",bg = 'forest green',command = trouver_notes("Flavie"))
+bouton_6 = Button(fenetre,text = " Flavie ",bg = 'forest green',command = trouver_notes)
 bouton_6.configure(height=4, width=25)
 bouton_6.place(x=60,y=515)
 
-bouton_7 = Button(fenetre,text = " Rosita ",bg = 'blue violet',command = trouver_notes("Rosita"))
+bouton_7 = Button(fenetre,text = " Rosita ",bg = 'blue violet',command = trouver_notes)
 bouton_7.configure(height=4, width=25)
 bouton_7.place(x=60,y=590)
 
-bouton_8 = Button(fenetre,text = " Christian ",bg = 'forest green',command = trouver_notes("Christian"))
+bouton_8 = Button(fenetre,text = " Christian ",bg = 'forest green',command = trouver_notes)
 bouton_8.configure(height=4, width=25)
 bouton_8.place(x=60,y=665)
 
