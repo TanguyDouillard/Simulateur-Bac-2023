@@ -15,6 +15,7 @@ fenetre.title("Simulateur des notes du Bac")
 
 #_______________________________________________________________________________
 
+Prenom = None
 
 #--------------------------------------------------------------
 
@@ -46,7 +47,7 @@ def trouver_notes_Tanguy():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return liste_2
+    return liste_2, Prenom
 
 
 def trouver_notes_Alexis():
@@ -64,7 +65,7 @@ def trouver_notes_Alexis():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return liste_2
+    return Prenom, liste_2
 
 def trouver_notes_Massine():
     Prenom="Massine"
@@ -81,7 +82,7 @@ def trouver_notes_Massine():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return liste_2
+    return liste_2, Prenom
 
 def trouver_notes_Felix():
     Prenom="Felix"
@@ -98,7 +99,7 @@ def trouver_notes_Felix():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return liste_2
+    return liste_2, Prenom
 
 def trouver_notes_Flavie():
     Prenom="Flavie"
@@ -115,7 +116,7 @@ def trouver_notes_Flavie():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return liste_2
+    return liste_2, Prenom
 
 def trouver_notes_Rosita():
     Prenom="Rosita"
@@ -132,7 +133,7 @@ def trouver_notes_Rosita():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return liste_2
+    return liste_2, Prenom
 
 def trouver_notes_Philipp():
     Prenom="Philipp"
@@ -149,7 +150,7 @@ def trouver_notes_Philipp():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return liste_2
+    return liste_2, Prenom
 
 def trouver_notes_Christian():
     Prenom="Christian"
@@ -166,21 +167,28 @@ def trouver_notes_Christian():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
+    return liste_2, Prenom
+
+
+def trouver_notes(Prenom):
+    l=[Prenom]
+    cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
+    liste_2=cursor.fetchall()
+    print(liste_2)
     return liste_2
-
-
 #_______________________________________________________________________________
 
 
 
 def mention():
+    global Prenom
     philo = var_Philo.get()
     GO = var_GO.get()
     l = [GO, philo]
-    cursor.execute("UPDATE eleves SET note_grand_oral = ?, note_philo = ? ", l)
+    cursor.execute("UPDATE eleves SET note_grand_oral = ?, note_philosophie = ? ", l)
     liste = cursor.fetchall()
     # insert into philo & GO
-##    moy=moyenne(Prenom)
+    moy=moyenne(Prenom)
     moy = 16
     titre= Label(fenetre, text = moy, fg = 'light coral', bg="grey14")
     titre.configure(font=("Source Serif Pro Semibold",20))
