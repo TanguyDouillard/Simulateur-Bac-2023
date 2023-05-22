@@ -15,24 +15,48 @@ fenetre.title("Simulateur des notes du Bac")
 
 #_______________________________________________________________________________
 
-Prenom = None
+Prenom=""
 
 #--------------------------------------------------------------
 
 def moyenne(Prenom):
-    liste_3=trouver_notes(Prenom)
+
+    print(Prenom)
+    if Prenom == "Alexis":
+        liste_3=trouver_notes_Alexis()
+        print("C'est alexis")
+    elif Prenom == "Tanguy":
+        liste_3=trouver_notes_Tanguy()
+    elif Prenom == "Philipp":
+        liste_3=trouver_notes_Philipp()
+    elif Prenom == "Massine":
+        liste_3=trouver_notes_Massine()
+    elif Prenom == "Rosita":
+        liste_3=trouver_notes_Rosita()
+    elif Prenom == "Flavie":
+        liste_3=trouver_notes_Flavie()
+    elif Prenom == "Felix":
+        liste_3=trouver_notes_Felix()
+    elif Prenom == "Christian":
+        liste_3=trouver_notes_Christian()
+    else:
+        liste_3=[(0,0,0,0,0,0)]
+    print(liste_3)
     moy=0
     liste_des_notes=[]
     for elt in liste_3[0]:
-        if elt == None:
-            pass
-        else:
-            liste_des_notes.append(elt)
-            moy=moy+elt
+        print("a",elt)
+        for e in elt:
+            if e == '':
+                pass
+            else:
+                liste_des_notes.append(e)
+                moy=moy+e
     moyenne=moy/len(liste_des_notes)
     return moyenne
 
 def trouver_notes_Tanguy():
+    global Prenom
     Prenom="Tanguy"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -51,6 +75,7 @@ def trouver_notes_Tanguy():
 
 
 def trouver_notes_Alexis():
+    global Prenom
     Prenom="Alexis"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -65,9 +90,11 @@ def trouver_notes_Alexis():
     labels[1].place(x=200,y=100)
     labels[2].place(x=105,y=160)
     labels[3].place(x=105,y=220)
-    return Prenom, liste_2
+    print(Prenom)
+    return liste_2, Prenom
 
 def trouver_notes_Massine():
+    global Prenom
     Prenom="Massine"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -85,6 +112,7 @@ def trouver_notes_Massine():
     return liste_2, Prenom
 
 def trouver_notes_Felix():
+    global Prenom
     Prenom="Felix"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -102,6 +130,7 @@ def trouver_notes_Felix():
     return liste_2, Prenom
 
 def trouver_notes_Flavie():
+    global Prenom
     Prenom="Flavie"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -119,6 +148,7 @@ def trouver_notes_Flavie():
     return liste_2, Prenom
 
 def trouver_notes_Rosita():
+    global Prenom
     Prenom="Rosita"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -136,6 +166,7 @@ def trouver_notes_Rosita():
     return liste_2, Prenom
 
 def trouver_notes_Philipp():
+    global Prenom
     Prenom="Philipp"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -153,6 +184,7 @@ def trouver_notes_Philipp():
     return liste_2, Prenom
 
 def trouver_notes_Christian():
+    global Prenom
     Prenom="Christian"
     l=[Prenom]
     cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
@@ -170,18 +202,20 @@ def trouver_notes_Christian():
     return liste_2, Prenom
 
 
-def trouver_notes(Prenom):
-    l=[Prenom]
-    cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
-    liste_2=cursor.fetchall()
-    print(liste_2)
-    return liste_2
-#_______________________________________________________________________________
+##def trouver_notes(Prenom):
+##
+##    l=[Prenom]
+##    cursor.execute("SELECT note_oral_fr, note_ecrit_fr, note_spe_1, note_spe_2, note_grand_oral, note_philosophie FROM eleves WHERE prenom=?",l)
+##    liste_2=cursor.fetchall()
+##    print(liste_2)
+##    return liste_2
+##_______________________________________________________________________________
 
 
 
 def mention():
     global Prenom
+    print(Prenom)
     philo = var_Philo.get()
     GO = var_GO.get()
     l = [GO, philo]
@@ -189,10 +223,14 @@ def mention():
     liste = cursor.fetchall()
     # insert into philo & GO
     moy=moyenne(Prenom)
-    moy = 16
     titre= Label(fenetre, text = moy, fg = 'light coral', bg="grey14")
     titre.configure(font=("Source Serif Pro Semibold",20))
     titre.place(x=620, y=604)
+
+    titre= Label(fenetre, text = "                                                           ",fg = 'light coral', bg="grey8")
+    titre.configure(font=("Source Serif Pro Semibold",20))
+    titre.place(x=935, y=300)
+
 
     if moy>=16:
         titre= Label(fenetre, text = " Mention très bien ! ",fg = 'light coral', bg="grey14")
@@ -210,7 +248,7 @@ def mention():
         titre.place(x=950, y=300)
 
     elif moy>=10:
-        titre= Label(fenetre, text = " Pas de mentions ",fg = 'light coral', bg="grey14")
+        titre= Label(fenetre, text = " Pas de mention ",fg = 'light coral', bg="grey14")
         titre.configure(font=("Source Serif Pro Semibold",20))
         titre.place(x=975, y=300)
 
@@ -351,7 +389,6 @@ titre.place(x=435, y=600)
 #----------------------------------------------------------------
 
 #----------------------------------------------------------------
-
 
 
 fenetre.mainloop()
