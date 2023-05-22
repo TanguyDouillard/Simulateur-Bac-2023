@@ -261,21 +261,21 @@ canevas = Canvas(fenetre, width=450, height=500, bg="grey12",  highlightbackgrou
 canevas.pack(padx=5,pady=5)
 canevas.place(x=400, y=200)
 
-titre= Label(fenetre, text = "Simulateur Bac 2023",fg = 'black')
-titre.configure(font=("Source Serif Pro Semibold",25))
-titre.place(x=475, y=35)
+sim= Label(fenetre, text = "Simulateur Bac 2023",fg = 'black')
+sim.configure(font=("Source Serif Pro Semibold",25))
+sim.place(x=475, y=35)
 
-titre= Label(fenetre, text = "Elèves",fg = 'black')
-titre.configure(font=("Source Serif Pro Semibold",25))
-titre.place(x=90, y=55)
+elv= Label(fenetre, text = "Elèves",fg = 'black')
+elv.configure(font=("Source Serif Pro Semibold",25))
+elv.place(x=90, y=55)
 
-titre= Label(fenetre, text = "Résultat",fg = 'black')
-titre.configure(font=("Source Serif Pro Semibold",25))
-titre.place(x=1008, y=55)
+res= Label(fenetre, text = "Résultat",fg = 'black')
+res.configure(font=("Source Serif Pro Semibold",25))
+res.place(x=1008, y=55)
 
-titre= Label(fenetre, text = " Mention : ",fg = 'dark violet', bg="grey14")
-titre.configure(font=("Source Serif Pro Semibold",25))
-titre.place(x=1000, y=235)
+mention_b= Label(fenetre, text = " Mention : ",fg = 'dark violet', bg="grey14")
+mention_b.configure(font=("Source Serif Pro Semibold",25))
+mention_b.place(x=1000, y=215)
 
 fenetre.geometry("1920x1000")
 fenetre.configure(bg = "grey8")
@@ -304,7 +304,7 @@ fenetre.configure(bg = "grey8")
 ##titre= Label(fenetre, text = "Moyenne : ",fg = 'dark violet', bg="grey8")
 ##titre.configure(font=("Source Serif Pro Semibold",25))
 
-titre.place(x=995, y=435)
+#titre.place(x=995, y=435)
 
 bouton_1 = Button(fenetre,text = " Alexis ",bg = 'blue violet',command = trouver_notes_Alexis)
 bouton_1.configure(height=4, width=25)
