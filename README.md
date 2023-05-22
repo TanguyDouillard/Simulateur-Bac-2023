@@ -6,7 +6,8 @@ Ce logiciel permet de donner une prediction des notes du bac.
 - Permet de calculer la moyenne
 - Permet d'afficher la mention
 - Les notes de Philo et du Grand Oral sont customisables
-- 
+
 
 ## BacV2.py
-bodphbusn
+
+- Les notes de Philo et Grand Oral sont conservées dans les bases de données et s'affichent dans les Entry qaund on appuie sur le bouton de l'élève
